@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pirate Plumbing | Plumber in Panorama</title>
+<meta name="description" content="Design concept for Pirate Plumbing, a plumbing business in Panorama, Cape Town. Example page with click-to-call, service area and service sections.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0c6b68">
+<style>
+:root{--a:#0c6b68;--a-ink:#0a5553;--tint:#e6f1f0;--edge:#c2dedd;--r:3px;--rs:3px;--display-font:system-ui, -apple-system, "Segoe UI Variable Display", "Segoe UI", sans-serif;--label-font:ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;--body-font:system-ui, -apple-system, "Segoe UI Variable Display", "Segoe UI", sans-serif;--display-size:clamp(2.4rem, 10vw, 4.2rem);--track:-0.045em;--pad:clamp(4.5rem, 10vw, 7.5rem);--canvas:#ffffff;--surface:#fbfbfa;--ink:#15181a;--ink-text:#25292c;--muted:#5d6469;--line:#e4e7e6;--slot-ink:#5d6469}
+html{*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body,h1,h2,h3,h4,p,ul,ol,figure,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+img,svg{max-width:100%;display:block}
+body{
+background:var(--canvas);
+color:var(--ink-text);
+font-family:var(--body-font);
+font-size:1.0625rem;
+line-height:1.62;
+overflow-wrap:break-word;
+}
+.wrap{width:100%;max-width:70rem;margin:0 auto;padding:0 clamp(1.15rem,5vw,2.5rem)}
+a{color:var(--a-ink)}
+:focus-visible{outline:3px solid var(--a);outline-offset:3px;border-radius:2px}
+/* Type scale. Two fluid steps plus a fixed small label size: a plumber's
+customer scans a headline, a job title and a phone number, nothing else. */
+h1{font-family:var(--display-font);font-size:var(--display-size);line-height:1.02;
+letter-spacing:var(--track);font-weight:var(--display-weight);text-wrap:balance}
+h2{font-family:var(--display-font);font-size:clamp(1.55rem,4.6vw,2.35rem);line-height:1.08;
+letter-spacing:-0.025em;font-weight:var(--display-weight);text-wrap:balance}
+h3{font-size:1.0625rem;line-height:1.3;font-weight:650;letter-spacing:-0.01em}
+p{max-width:62ch}
+.lede{font-size:clamp(1.02rem,2.4vw,1.2rem);line-height:1.5;color:var(--muted);max-width:44ch}
+.label{font-family:var(--label-font);font-size:.6875rem;letter-spacing:.16em;
+text-transform:uppercase;color:var(--a-ink);font-weight:600}
+.note{font-size:.875rem;line-height:1.55;color:var(--muted);max-width:56ch}
+.slot{color:var(--slot-ink);font-family:var(--label-font);font-size:.8125rem;line-height:1.5;
+background:var(--tint);border:1px dashed var(--edge);border-radius:var(--rs);
+padding:.5rem .7rem;display:block}
+/* Sections share one rhythm token so vertical spacing is consistent, and the
+bottom padding runs larger than the top for optical balance. */
+section{padding:var(--pad) 0 calc(var(--pad) * .78)}
+section.tint{background:var(--tint);border-block:1px solid var(--edge)}
+.sect-head{margin-bottom:clamp(1.6rem,4vw,2.6rem);display:flex;flex-direction:column;gap:.7rem}
+.sect-head .label{margin-bottom:-.15rem}
+/* Buttons: one label per intent across the whole page. The primary call
+action is always &quot;Call {number}&quot;, everywhere it appears. */
+.btn{
+display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+font-family:var(--label-font);font-size:.9375rem;font-weight:650;letter-spacing:.02em;
+text-decoration:none;white-space:nowrap;
+padding:.95rem 1.35rem;min-height:3rem;
+background:var(--a);color:#fff;border:1px solid var(--a);border-radius:var(--rs);
+transition:transform .16s cubic-bezier(.2,.8,.3,1),background-color .16s ease-out;
+}
+.btn:hover{background:var(--a-ink);border-color:var(--a-ink)}
+.btn:active{transform:scale(.975)}
+.btn-ghost{background:transparent;color:var(--a-ink);border-color:var(--edge)}
+.btn-ghost:hover{background:var(--tint);color:var(--a-ink)}
+.btn svg{flex:none}
+/* Top bar. Sits directly on the canvas rather than floating glass: a trades
+customer wants a phone number, not an effect. */
+.topbar{border-bottom:1px solid var(--line);background:var(--canvas)}
+.bar{display:flex;align-items:center;gap:1rem;min-height:4rem;padding-block:.7rem}
+.brand{font-family:var(--display-font);font-size:1rem;font-weight:700;
+letter-spacing:-0.02em;flex:1 1 auto;min-width:0}
+.brand span{display:block;font-family:var(--label-font);font-size:.625rem;letter-spacing:.14em;
+text-transform:uppercase;color:var(--muted);font-weight:500;margin-top:.15rem}
+.topbar .btn{flex:none;font-size:.875rem;padding:.8rem 1.05rem}
+.topnav{display:none}
+.topnav a{font-family:var(--label-font);font-size:.75rem;letter-spacing:.08em;
+text-transform:uppercase;text-decoration:none;color:var(--muted);padding:.4rem 0}
+.topnav a:hover{color:var(--a-ink)}
+/* Honest marker. Always visible, never dismissible, never looks like a badge
+the plumber designed: these pages are published publicly. max-width is
+cleared because the global p rule would otherwise shrink the dark bar to one
+text column on desktop. */
+.demo-flag{
+position:relative;z-index:3;max-width:none;background:var(--ink);color:#fff;
+font-family:var(--label-font);font-size:.6875rem;letter-spacing:.1em;
+text-transform:uppercase;padding:.45rem clamp(1.15rem,5vw,2.5rem);
+}
+.demo-flag b{font-weight:700}
+/* Modules */
+.grid{display:grid;gap:clamp(1rem,2.4vw,1.6rem)}
+.jobs{border-top:1px solid var(--line)}
+.job{padding:clamp(1.05rem,3vw,1.5rem) 0;border-bottom:1px solid var(--line);
+display:flex;flex-direction:column;gap:.55rem}
+.job h3{color:var(--a-ink)}
+.areas-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-family:var(--label-font);font-size:.8125rem;letter-spacing:.01em;
+padding:.5rem .85rem;border-radius:999px;background:var(--surface);
+border:1px solid var(--line);color:var(--ink-text)}
+.chip-lead{background:var(--a);border-color:var(--a);color:#fff;font-weight:650}
+.proof{border-top:1px solid var(--line)}
+.proof dt{padding:1rem 0 0;font-weight:650;color:var(--a-ink)}
+.proof dd{padding:.35rem 0 1rem;margin:0;border-bottom:1px solid var(--line)}
+.proof dd .slot{width:100%}
+.quotes{display:grid;gap:clamp(.9rem,2vw,1.2rem)}
+.quote{border-left:3px solid var(--a);padding:.2rem 0 .2rem 1rem;display:flex;
+flex-direction:column;gap:.5rem}
+.quote .rating{font-family:var(--label-font);font-size:.75rem;color:var(--muted);
+letter-spacing:.08em}
+.quote .who{font-size:.8125rem;color:var(--muted)}
+.current{display:grid;gap:1.1rem;padding:clamp(1.3rem,3.4vw,2rem);
+background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.current dl{display:grid;gap:.35rem;font-size:.9375rem}
+.current dt{font-family:var(--label-font);font-size:.6875rem;letter-spacing:.14em;
+text-transform:uppercase;color:var(--muted)}
+.current dd{font-weight:600}
+/* Photo frame. No image is shipped (a stock photo of another plumber's van is
+both a lie and a kilobyte), so this is a clearly empty frame with a hatch that
+reads as &quot;image goes here&quot; rather than as a broken box. */
+.photo{display:flex;flex-direction:column;justify-content:flex-end;gap:.4rem;
+min-height:13rem;padding:1.1rem;border:1px dashed var(--edge);border-radius:var(--r);
+background:
+repeating-linear-gradient(135deg,var(--tint) 0 10px,transparent 10px 20px),
+var(--canvas)}
+.photo .slot{background:rgba(255,255,255,.82)}
+/* Closing call block. Sits on the accent so the last thing on the page is the
+number, and inverts exactly once, as a deliberate full-bleed accent panel. */
+.callout{background:var(--a);color:#fff}
+.callout h2{color:#fff}
+.callout .lede{color:rgba(255,255,255,.86)}
+.callout .btn{background:#fff;color:var(--a-ink);border-color:#fff}
+.callout .btn:hover{background:var(--tint);color:var(--a-ink)}
+.callout .label{color:rgba(255,255,255,.82)}
+.call-row{display:flex;flex-direction:column;gap:1.4rem}
+.call-list{display:grid;gap:.5rem;font-size:.9375rem}
+.call-list div{display:flex;gap:.6rem;align-items:baseline}
+.call-list dt{font-family:var(--label-font);font-size:.625rem;letter-spacing:.14em;
+text-transform:uppercase;color:rgba(255,255,255,.75);min-width:5.5rem;flex:none}
+.call-list dd{margin:0;font-weight:550}
+footer{border-top:1px solid var(--line);background:var(--surface);
+padding:clamp(2rem,5vw,3rem) 0 6rem;font-size:.8125rem;color:var(--muted)}
+footer p{max-width:70ch}
+footer .flagline{font-family:var(--label-font);font-size:.6875rem;letter-spacing:.1em;
+text-transform:uppercase;color:var(--a-ink);font-weight:650;margin-bottom:.75rem}
+/* Sticky tap-to-call. Fixed to the bottom on phones, where the thumb is, and
+dismissed at tablet width because the top bar already shows the number. */
+.tapbar{position:fixed;left:0;right:0;bottom:0;z-index:40;
+padding:.6rem clamp(.8rem,4vw,1.2rem) calc(.6rem + env(safe-area-inset-bottom));
+background:rgba(255,255,255,.94);border-top:1px solid var(--line);
+backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.tapbar .btn{width:100%}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:1rem;top:1rem;z-index:60;background:var(--a);color:#fff;
+padding:.7rem 1rem;border-radius:var(--rs)}
+@media (min-width:48rem){
+body{font-size:1.125rem}
+.topnav{display:flex;gap:1.6rem}
+.brand{font-size:1.0625rem}
+.topbar .btn{font-size:.9375rem;padding:.95rem 1.35rem}
+.tapbar{display:none}
+footer{padding-bottom:clamp(2rem,5vw,3rem)}
+}
+@media (min-width:64rem){
+.quotes{grid-template-columns:repeat(3,1fr)}
+.call-row{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:3rem}
+}
+@media (prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+body{--display-weight:800;--body-font:var(--sans)}
+.topbar{background:var(--ink);border-bottom:0}
+.topbar .brand{color:#fff}
+.topbar .brand span{color:rgba(255,255,255,.62)}
+.topbar .btn{background:#fff;color:var(--a-ink);border-color:#fff}
+.topbar .btn:hover{background:var(--tint)}
+.topnav a{color:rgba(255,255,255,.72)}
+.topnav a:hover{color:#fff}
+.demo-flag{background:var(--a);color:#fff}
+.hero .hero-grid{display:grid;gap:clamp(1.4rem,3.5vw,2.2rem)}
+.hero h1{margin-block:.5rem .75rem}
+.hero .btn-row,.hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.4rem}
+.hero-cta{align-self:end}
+.jobs{display:block;border-top:1px solid var(--line)}
+.job{display:grid;grid-template-columns:1fr;gap:.35rem;background:none;border:0;
+border-bottom:1px solid var(--line);border-radius:0;padding:1.15rem 0}
+.job h3{font-family:var(--label-font);font-size:.875rem;letter-spacing:.06em;
+text-transform:uppercase}
+.job .slot{width:100%;background:none;border:0;padding:0;border-radius:0}
+.quote{border-left-width:2px}
+@media (min-width:48rem){
+.hero .hero-grid{grid-template-columns:1.35fr .65fr;align-items:end}
+.job{grid-template-columns:minmax(11rem,.4fr) 1fr;gap:2rem;align-items:baseline}
+}}
+</style>
+</head>
+<body class="v-ledger">
+<a class="skip" href="#services">Skip to services</a>
+
+<p class="demo-flag"><b>Design concept</b> &#183; not a live website &#183; bracketed text is placeholder</p>
+
+<header class="topbar">
+<div class="wrap bar">
+<div class="brand">Pirate Plumbing<span>Panorama, Cape Town</span></div>
+<nav class="topnav" aria-label="Sections"><a href="#services">Services</a><a href="#areas">Areas</a><a href="#proof">Details</a><a href="#current">This site</a></nav>
+<a class="btn" href="tel:0712460127"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call 071 246 0127</span></a>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="wrap hero-grid">
+<div class="hero-main">
+<p class="label">Plumber in Panorama</p>
+<h1>Pirate Plumbing</h1>
+<p class="lede">[Your own one-line pitch here: who you are, and what you promise]</p>
+
+</div>
+<div class="hero-cta"><a class="btn" href="tel:0712460127"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call 071 246 0127</span></a></div>
+</div>
+</section>
+
+<section id="proof"><div class="wrap"><div class="sect-head"><h2>The details customers ask for</h2><p class="note">These are the six answers a customer wants before they dial. Fill in only what you can show them.</p></div><dl class="proof"><div><dt>Registration</dt><dd><span class="slot">[Your licence or registration details, if you hold any. Delete the line if not]</span></dd></div><div><dt>Insurance</dt><dd><span class="slot">[Public liability cover: insurer and policy number, if you want it shown]</span></dd></div><div><dt>Hours</dt><dd><span class="slot">[Your real hours: office only, weekends, or on call around the clock]</span></dd></div><div><dt>Pricing</dt><dd><span class="slot">[Call-out fee and hourly rate, or how a quote is worked out]</span></dd></div><div><dt>Workmanship</dt><dd><span class="slot">[Any warranty you genuinely offer, with its terms and who it covers]</span></dd></div><div><dt>Reviews</dt><dd><span class="slot">[Your rating and where customers can read it. Only once you have real ones]</span></dd></div></dl></div></section><section id="current" class="tint"><div class="wrap"><div class="sect-head"><h2>Your current site</h2></div><div class="current"><p class="note">Pirate Plumbing is listed at <a href="http://www.pirateplumbing.co.za/">pirateplumbing.co.za</a>. That page stays. This concept is a second version to compare against, built to open faster on a phone and make the number impossible to miss.</p><p class="note">Bracketed text on this page is placeholder. Only the name, number, email and location come from your public business listing.</p></div></div></section><section id="services"><div class="wrap"><div class="sect-head"><p class="label">Services</p><h2>What we do</h2><p class="note">The headings are the usual plumbing jobs. Replace each bracketed line with the work Pirate Plumbing actually takes on.</p></div><ul class="grid jobs"><li class="job"><h3>Emergency callouts</h3><span class="slot">[The emergency work you take, and how fast you can realistically get there]</span></li><li class="job"><h3>Installations</h3><span class="slot">[The fittings you install: geysers, toilets, basins, taps, showers]</span></li><li class="job"><h3>Blocked drains</h3><span class="slot">[Your drain work and the equipment you use: rods, machines, jetters]</span></li><li class="job"><h3>Leak detection</h3><span class="slot">[Only if you offer this: how you find the leak, and what you charge to come out]</span></li><li class="job"><h3>Hot water</h3><span class="slot">[Only if you offer this: brands you work on, plus solar or heat pump work]</span></li><li class="job"><h3>Maintenance</h3><span class="slot">[Only if you offer this: inspections, service plans, call-out policy]</span></li></ul></div></section><section id="areas" class="tint"><div class="wrap"><div class="sect-head"><h2>Where Pirate Plumbing works</h2><p class="note">A starting list built from the suburb on your public listing. Cut it back to the areas you can reach within a reasonable drive.</p></div><ul class="areas-list"><li><span class="chip chip-lead">Panorama</span></li><li><span class="chip">City Centre</span></li><li><span class="chip">Foreshore</span></li><li><span class="chip">Observatory</span></li><li><span class="chip">Salt River</span></li><li><span class="chip">Woodstock</span></li><li><span class="chip">Gardens</span></li><li><span class="chip">Mowbray</span></li><li><span class="chip">Philippi</span></li></ul></div></section>
+
+<section class="callout">
+<div class="wrap call-row">
+<div>
+<p class="label">Talk to a person</p>
+<h2>Pirate Plumbing</h2>
+<p class="lede">[What happens when they call: when you answer, how you quote, how you take payment]</p>
+</div>
+<div>
+<a class="btn" href="tel:0712460127"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Call 071 246 0127</span></a>
+<dl class="call-list" style="margin-top:1.4rem">
+<div><dt>Phone</dt><dd>071 246 0127</dd></div>
+<div><dt>Based in</dt><dd>Hennie Winterbach St, Panorama, Cape Town, 8001</dd></div>
+
+<div><dt>Hours</dt><dd>[Your hours here]</dd></div>
+</dl>
+</div>
+</div>
+</section>
+
+<section class="tint">
+<div class="wrap">
+<div class="sect-head">
+<h2>What customers say</h2>
+<p class="note">Three empty slots. Real reviews go here, in your own words, with
+the customer's suburb. Nothing is filled in for you.</p>
+</div>
+<div class="quotes"><figure class="quote"><p class="rating">[star rating]</p><blockquote><span class="slot">[Your customer's words here]</span></blockquote><figcaption class="who">[First name, suburb]</figcaption></figure><figure class="quote"><p class="rating">[star rating]</p><blockquote><span class="slot">[Your customer's words here]</span></blockquote><figcaption class="who">[First name, suburb]</figcaption></figure><figure class="quote"><p class="rating">[star rating]</p><blockquote><span class="slot">[Your customer's words here]</span></blockquote><figcaption class="who">[First name, suburb]</figcaption></figure></div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<p class="flagline">Concept page &#183; Pirate Plumbing &#183; 2026</p>
+<p>Design mock-up prepared as a sales example. This is not Pirate Plumbing's live website, and it is not published by Pirate Plumbing. Text in square brackets is placeholder to be replaced. Nothing on this page is a review, rating, registration, insurance or warranty claim about Pirate Plumbing: no such claim has been made up for this example.</p>
+<p style="margin-top:.75rem">Built as a free example by a local web designer.
+Bracketed text on this page is yours to replace or delete.</p>
+</div>
+</footer>
+
+<div class="tapbar"><a class="btn" href="tel:0712460127"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>Tap to call 071 246 0127</span></a></div>
+</body>
+</html>
